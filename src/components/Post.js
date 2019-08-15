@@ -1,19 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchPosts } from '../actions/postActions'
 
-export default class Post extends React.Component {
-    constructor () {
-        super()
-        this.state = {
-            posts: []
-        }
-    }
-    async componentDidMount () {
-        let result = await fetch('https://jsonplaceholder.typicode.com/posts')
-        result = await result.json()
-        this.setState({posts: result}, () => console.log(this.state))
+class Post extends React.Component {
+    componentDidMount() {
+        this.props.fetchPosts()
     }
     render () {
-        const postHtml = this.state.posts.map(post => (
+        const postHtml = this.props.myPosts.map(post => (
             <div style={{width: '50%', margin: 'auto'}} key={post.id}>
                 <h3>{post.title}</h3>
                 <p>{post.body}</p>
@@ -29,3 +23,11 @@ export default class Post extends React.Component {
         )
     }
 }
+
+// This is being called in the combineReducers() from reducers/index.js
+const mapStateToProps = state => ({
+    myPosts: state.myPosts.items
+})
+
+// The first parameter of connect is the state that you want to pass to the importing component of this component
+export default connect(mapStateToProps, { fetchPosts })(Post)
