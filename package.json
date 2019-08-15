@@ -1,0 +1,29 @@
+{
+  "name": "redux-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server dist",
+    "compile": "webpack -d",
+    "compile-watch": "webpack -wd"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-env": "2.4.1",
+    "babel-loader": "7.1.2",
+    "babel-watch": "2.0.7",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "2.30.1",
+    "json-loader": "0.5.7",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "style-loader": "0.19.1",
+    "stylus": "0.54.5",
+    "stylus-loader": "3.0.1",
+    "webpack": "3.10.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
