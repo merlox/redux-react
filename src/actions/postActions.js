@@ -10,3 +10,19 @@ export const fetchPosts = () => async dispatch => {
         payload
     })
 }
+
+export const createPost = (postData) => async dispatch => {
+    let result = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'post',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData),
+    })
+    let payload = await result.json()
+
+    dispatch({
+        type: NEW_POST,
+        payload
+    })
+}

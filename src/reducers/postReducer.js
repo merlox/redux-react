@@ -10,10 +10,15 @@ export default (state=initialState, action) => {
         case FETCH_POSTS:
             return {
                 ...state,
-                items: action.payload
+                items: action.payload,
             }
             break
         case NEW_POST:
+            state.items.unshift(action.payload)
+            return {
+                ...state,
+                item: action.payload,
+            }
             break
         default:
             return state
